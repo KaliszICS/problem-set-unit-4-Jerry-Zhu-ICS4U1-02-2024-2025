@@ -18,4 +18,12 @@ public class ProblemSetTest {
       assertEquals("whiskers", cat.getName());
    }
    */
+
+   @Test
+   public void shuffleTest(){
+      Deck d = new Deck();
+      Deck c = new Deck();
+      d.shuffle();
+      assertEquals(c, d);
+   }
 }
