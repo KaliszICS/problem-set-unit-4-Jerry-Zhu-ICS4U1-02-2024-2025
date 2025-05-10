@@ -335,6 +335,41 @@ public class ProblemSetTest {
       DiscardPile d = new DiscardPile(discardPile);
       assertEquals("Ace of Spades, 2 of Diamonds, 2 of Spades.", d.toString());
    }
+
+   @Test
+   public void playerConstructorTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] hand = new Card[] {card, card2};
+      Player p = new Player("Jerry", 18, hand);
+      assertEquals("Jerry", p.getName());
+      assertEquals(18, p.getAge());
+      assertArrayEquals(hand, p.getHand());
+   }
+
+   @Test
+   public void playerConstructorTest2()
+   {
+      Card[] hand = new Card[] {};
+      Player p = new Player("Jerry", 18);
+      assertEquals("Jerry", p.getName());
+      assertEquals(18, p.getAge());
+      assertArrayEquals(hand, p.getHand());
+   }
+   
+   @Test
+   public void playerSizeTest()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] hand = new Card[] {card, card2};
+      Player p = new Player("Jerry", 18, hand);
+      assertEquals(2, p.size());
+      
+   }
+
+   
 }
 
 
