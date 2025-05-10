@@ -2,6 +2,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import java.io.*;
+import java.util.Arrays;
 
 public class ProblemSetTest {
 
@@ -19,11 +20,189 @@ public class ProblemSetTest {
    }
    */
 
-   @Test
-   public void shuffleTest(){
-      Deck d = new Deck();
-      Deck c = new Deck();
-      d.shuffle();
-      assertEquals(c, d);
+    @Test
+   public void cardGetNameTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      assertEquals("Ace", card.getName());
    }
+
+   @Test
+   public void cardGetNameTest2()
+   {
+      Card card = new Card("2", "Diamonds", 1);
+      assertEquals("2", card.getName());
+   }
+
+    @Test
+   public void cardGetSuitTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      assertEquals("Spades", card.getSuit());
+   }
+
+   @Test
+   public void cardGetSuitTest2()
+   {
+      Card card = new Card("2", "Diamonds", 1);
+      assertEquals("Diamonds", card.getSuit());
+   }
+
+   @Test
+   public void cardGetValueTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      assertEquals(13, card.getValue());
+   }
+
+   @Test
+   public void cardGetValueTest2()
+   {
+      Card card = new Card("2", "Diamonds", 1);
+      assertEquals(1, card.getValue());
+   }
+
+   @Test
+   public void cardToStringTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      assertEquals("Ace of Spades", card.toString());
+   }
+
+   @Test
+   public void cardToStringTest2()
+   {
+      Card card = new Card("2", "Diamonds", 1);
+      assertEquals("2 of Diamonds", card.toString());
+   }
+
+   @Test
+   public void cardEqualsTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = null;
+      assertEquals(false, card.equals(card2));
+   }
+
+
+   
+   @Test
+   public void cardEqualsTest2()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("Ace", "Spades", 13);
+      assertEquals(true, card.equals(card2));
+   }
+   
+   @Test
+   public void cardEqualsTest3()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      assertEquals(false, card.equals(card2));
+   }
+
+@Test
+   public void cardEqualsTest4()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      String word = "EHHEHE";
+      assertEquals(false, card.equals(word));
+   }
+
+   @Test
+   public void getDeckTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] deck = new Card[] {card, card2};
+      Deck d = new Deck(deck);
+      assertTrue(Arrays.equals(deck, d.getDeck()));
+   }
+   
+    @Test
+   public void getDeckTest2()
+   {
+      Card[] deck = new Card[] {};
+      Deck d = new Deck();
+      assertFalse(Arrays.equals(deck, d.getDeck()));
+   }
+   
+    @Test
+   public void deckSizeTest()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] deck = new Card[] {card, card2};
+      Deck d = new Deck(deck);
+      assertEquals(2, d.size());
+   }
+   
+    @Test
+   public void deckDrawTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] deck = new Card[] {card, card2};
+      Deck d = new Deck(deck);
+      assertEquals(card2, d.draw());
+   }
+
+    @Test
+   public void deckDrawTest2()
+   {
+      Card[] deck = new Card[] {};
+      Deck d = new Deck(deck);
+      assertEquals(null, d.draw());
+   }
+
+   @Test
+   public void deckDrawTest3()
+   {
+      Card[] deck = new Card[] {null};
+      Deck d = new Deck(deck);
+      assertEquals(null, d.draw());
+   }
+
+   @Test
+   public void deckAddCardTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] deckTest = new Card[] {card, card2};
+      Card[] deck = new Card[] {card};
+      Deck d = new Deck(deck);
+      d.addCard(card2);
+      assertTrue(Arrays.equals(deckTest, d.getDeck()));
+   }
+
+   @Test
+   public void deckAddCardTest2()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = null;
+      Card[] deckTest = new Card[] {card};
+      Card[] deck = new Card[] {card};
+      Deck d = new Deck(deck);
+      d.addCard(card2);
+      assertTrue(Arrays.equals(deckTest, d.getDeck()));
+   }
+   
+
+   @Test
+   public void deckReshuffleTest2()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] deck2 = new Card[] {card, card2, card2};
+      Card[] deck = new Card[] {card};
+      Deck d = new Deck(deck);
+      d.reshuffle(deck2);
+      assertEquals(4, d.size());
+   }
+
+   
 }
+
+
+
