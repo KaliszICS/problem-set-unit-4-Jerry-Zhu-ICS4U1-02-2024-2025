@@ -218,6 +218,123 @@ public class ProblemSetTest {
       DiscardPile d = new DiscardPile();
       assertTrue(Arrays.equals(deck, d.getDiscardPile()));
    }
+
+   @Test
+   public void discardPileSizeTest()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] discardPile = new Card[] {card, card2};
+      DiscardPile d = new DiscardPile(discardPile);
+      assertEquals(2, d.size());
+   }
+
+   @Test
+   public void discardPileAddCardTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] discardPileTest = new Card[] {card, card2};
+      Card[] discardPile = new Card[] {card};
+      DiscardPile d = new DiscardPile(discardPile);
+      d.addCard(card2);
+      assertTrue(Arrays.equals(discardPileTest, d.getDiscardPile()));
+   }
+
+   @Test
+   public void discardPileAddCardTest2()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = null;
+      Card[] discardPileTest = new Card[] {card};
+      Card[] discardPile = new Card[] {card};
+      DiscardPile d = new DiscardPile(discardPile);
+      d.addCard(card2);
+      assertTrue(Arrays.equals(discardPileTest, d.getDiscardPile()));
+   }
+
+   @Test
+   public void discardPileRemoveCardTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card card3 = new Card("2", "Spades", 1);
+      Card[] discardPileTest = new Card[] {card, card2};
+      Card[] discardPile = new Card[] {card, card2, card3};
+      DiscardPile d = new DiscardPile(discardPile);
+      d.removeCard(card3);
+      assertTrue(Arrays.equals(discardPileTest, d.getDiscardPile()));
+      assertEquals(card3, d.removeCard(card3));
+   }
+
+ @Test
+   public void discardPileRemoveCardTest2()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card card3 = new Card("2", "Spades", 1);
+      Card[] discardPileTest = new Card[] {card, card2, card3};
+      Card[] discardPile = new Card[] {card, card2, card3, card};
+      DiscardPile d = new DiscardPile(discardPile);
+      d.removeCard(card);
+      assertTrue(Arrays.equals(discardPileTest, d.getDiscardPile()));
+      assertEquals(card, d.removeCard(card));
+   }
+
+   @Test
+   public void discardPileRemoveCardTest3()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card card3 = new Card("2", "Spades", 1);
+      Card card4 = null;
+      Card[] discardPileTest = new Card[] {card, card2, card3};
+      Card[] discardPile = new Card[] {card, card2, card3};
+      DiscardPile d = new DiscardPile(discardPile);
+      d.removeCard(card4);
+      assertTrue(Arrays.equals(discardPileTest, d.getDiscardPile()));
+      assertEquals(null, d.removeCard(card4));
+   }
+
+   @Test
+   public void discardPileRemoveCardTest4()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card card3 = new Card("2", "Spades", 1);
+      Card[] discardPileTest = new Card[] {card, card2};
+      Card[] discardPile = new Card[] {card, card2};
+      DiscardPile d = new DiscardPile(discardPile);
+      d.removeCard(card3);
+      assertTrue(Arrays.equals(discardPileTest, d.getDiscardPile()));
+      assertEquals(null, d.removeCard(card3));
+   }
+
+   @Test
+   public void discardPileRemoveAllTest3()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card card3 = new Card("2", "Spades", 1);
+      Card[] discardPileTest = new Card[] {card, card2, card3};
+      Card[] discardPileTest2 = new Card[] {};
+      Card[] discardPile = new Card[] {card, card2, card3};
+      DiscardPile d = new DiscardPile(discardPile);
+      assertTrue(Arrays.equals(discardPileTest, d.removeAll()));
+      d.removeAll();
+      assertTrue(Arrays.equals(discardPileTest2, d.getDiscardPile()));
+   }
+
+   @Test
+   public void discardPileToStringTest()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card card3 = new Card("2", "Spades", 1);
+      Card[] discardPile = new Card[] {card, card2, card3};
+      DiscardPile d = new DiscardPile(discardPile);
+      assertEquals("Ace of Spades, 2 of Diamonds, 2 of Spades.", d.toString());
+   }
 }
 
 

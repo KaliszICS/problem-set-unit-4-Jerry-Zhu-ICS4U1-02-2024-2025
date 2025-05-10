@@ -175,6 +175,7 @@ private Card[] hand;
     /**
 	 * This method represents the player's hand as a String of its elements
 	 * @return Returns the player's hand as a String of its elements in the format "playerName, playerAge, name1 of suit1, name1 of suit2... etc"
+     * @throws NullPointerException if an element in the array is null
 	 */
  @Override
     public String toString(){

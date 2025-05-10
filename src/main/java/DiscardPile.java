@@ -120,6 +120,7 @@ private Card[] discardPile;
     /**
 	 * This method represents the discard pile as a String of its elements
 	 * @return Returns the discard pile as a String of its elements in the format "name1 of suit1, name1 of suit2... etc"
+     * @throws NullPointerException if an element in the array is null
 	 */
     @Override
     public String toString(){
