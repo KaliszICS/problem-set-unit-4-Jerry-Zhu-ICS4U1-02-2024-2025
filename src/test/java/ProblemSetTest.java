@@ -201,7 +201,23 @@ public class ProblemSetTest {
       assertEquals(4, d.size());
    }
 
+   @Test
+   public void getDiscardPileTest1()
+   {
+      Card card = new Card("Ace", "Spades", 13);
+      Card card2 = new Card("2", "Diamonds", 1);
+      Card[] discardPile = new Card[] {card, card2};
+      DiscardPile d = new DiscardPile(discardPile);
+      assertTrue(Arrays.equals(discardPile, d.getDiscardPile()));
+   }
    
+    @Test
+   public void getDiscardPileTest2()
+   {
+      Card[] deck = new Card[] {};
+      DiscardPile d = new DiscardPile();
+      assertTrue(Arrays.equals(deck, d.getDiscardPile()));
+   }
 }
 
 

@@ -28,7 +28,7 @@ private Card[] discardPile;
 	 * @return Returns the discard pile as a Card array
 	 */
     public Card[] getDiscardPile(){
-        return getDiscardPile();
+        return this.discardPile;
     }
 
     /**
