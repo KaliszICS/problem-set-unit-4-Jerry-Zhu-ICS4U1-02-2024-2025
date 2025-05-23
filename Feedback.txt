@@ -1,0 +1,9 @@
+K(30%): 100
+I(30%): 96
+C(10%): 100
+A(30%): 100
+98.8%
+Don't need an if statement for you equals, return the condition. (swap your condition logic)
+reuse your methods (addcard in reshuffle) instead of rewriting code.
+Would be much easier to use an ArrayList than an Array on the backend
+Don't need to copy the array for removeAll, just use the references
